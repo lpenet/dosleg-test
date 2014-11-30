@@ -8,10 +8,9 @@ package fr.penet;
 import fr.penet.dao.Sen;
 import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.apache.deltaspike.core.api.scope.ViewAccessScoped;
 
@@ -22,10 +21,8 @@ import org.apache.deltaspike.core.api.scope.ViewAccessScoped;
 @Named
 @ViewAccessScoped
 public class SenateursBean implements Serializable {
-        // Expose an entity manager using the resource producer pattern
-    @SuppressWarnings("unused")
-    @PersistenceContext
-    @Produces
+
+    @Inject
     private EntityManager em;
 
     public List<Sen> getValues() {
