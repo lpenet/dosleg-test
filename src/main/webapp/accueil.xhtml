@@ -15,20 +15,15 @@
 
     <h:body>
         <h:form>
-            <p:dataTable value="#{senateursBean.values}" var="sen" rowKey="#{sen.senmat}">
+            <p:dataTable value="#{senateursBean.values}" var="sen" rowKey="#{sen.senmat}" emptyMessage="Aucune valeur en base">
+                <f:facet name="header">Sénateurs actifs ou anciens</f:facet>
                 <p:column headerText="Matricule">#{sen.senmat}</p:column>
                 <p:column headerText="Qualité">#{sen.quacod}</p:column>
                 <p:column headerText="Nom">#{sen.sennomuse}</p:column>
                 <p:column headerText="Prénom">#{sen.senprenomuse}</p:column>
+                <p:column headerText="État">#{sen.etasen.etasenlib}</p:column>
             </p:dataTable>
             
-            <p:panelGrid columns="1">
-                <h:outputText value="Hello JSF World !"/>
-
-                <h:outputText value="#{testBean.test1}"/>
-
-                <h:outputText value="#{testBean.uneMethode('Test2')}"/>
-            </p:panelGrid>
         </h:form>
     </h:body>
 </f:view>
