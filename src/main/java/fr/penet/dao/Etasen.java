@@ -8,8 +8,6 @@ package fr.penet.dao;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 
@@ -19,22 +17,36 @@ import lombok.Getter;
  */
 @Entity
 // User is a keyword in some SQL dialects!
-@Table(name="sen")
+@Table(name="etasen")
 @Getter
-public class Sen {
+public class Etasen {
     @Id
-    private String senmat;
+    private String etasencod;
     
     @Column
-    private String sennomuse;
+    private String etasenlic;
     
     @Column
-    private String senprenomuse;
+    private String etasenlib;
     
     @Column
-    private String quacod;
+    private String etasenlil;
     
-    @ManyToOne
-    @JoinColumn(name="etasencod")
-    private Etasen etasen;
+    @Column
+    private String etasenlicfem;
+    
+    @Column
+    private String etasenlibfem;
+    
+    @Column
+    private String etasenlilfem;
+
+    @Column
+    private String etasenlicplu;
+    
+    @Column
+    private String etasenlibplu;
+    
+    @Column
+    private String etasenlilplu;
 }
