@@ -291,14 +291,14 @@
         </extensions>
     <resources>
       <resource>
-        <directory>src/main/resources</directory>
+        <directory>src/main/webapp</directory>
         <filtering>true</filtering>
         <includes>
           <include>META-INF/context.xml</include>
         </includes>
       </resource>
       <resource>
-        <directory>src/main/resources</directory>
+        <directory>src/main/webapp</directory>
         <filtering>false</filtering>
         <excludes>
           <exclude>META-INF/context.xml</exclude>
@@ -371,6 +371,31 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                  <webResources>
+                    <resource>
+                       <directory>src/main/webapp</directory>
+                       <!-- it's not a good idea to filter binary files -->
+                       <filtering>true</filtering>
+                       <includes>
+                           <include>META-INF/context.xml</include>
+                       </includes>
+                     </resource>
+                     <resource>
+                       <directory>src/main/webapp</directory>
+                       <!-- enable filtering -->
+                       <filtering>false</filtering>
+                       <excludes>
+                         <exclude>META-INF/context.xml</exclude>
+                       </excludes>
+                     </resource>
+                  </webResources>
+                </configuration>
+              </plugin>
         </plugins>
     </build>
     <profiles>
