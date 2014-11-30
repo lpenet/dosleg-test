@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/dosleg-test">
-   <Resource auth="Container" description="Dosleg opened database" maxActive="30" maxIdle="5" maxWait="900"
-            name="jdbc/dosleg" removeAbandoned="true" type="javax.sql.DataSource"
-            validationQuery="select * from senateurs.qua" driverClassName="org.postgresql.Driver"
-            username="${dosleg.user}" password="${dosleg.password}"
-            url="${dosleg.url}"/>
-</Context>
