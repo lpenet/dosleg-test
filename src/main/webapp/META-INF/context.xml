@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiJARLocking="true" path="/dosleg-test">
-   <Resource auth="Container" description="Dosleg opened database" maxActive="30" maxIdle="5" maxWait="900"
-            name="jdbc/dosleg" removeAbandoned="true" type="javax.sql.DataSource"
-            validationQuery="SELECT 1" driverClassName="org.postgresql.Driver"
-            username="${dosleg.user}" password="${dosleg.password}"
-            url="${dosleg.url}"/>
+  <Resource auth="Container" description="Dosleg opened database" driverClassName="org.postgresql.Driver" maxActive="30" maxIdle="5" maxWait="900" name="jdbc/dosleg" password="${dosleg.password}" removeAbandoned="true" type="javax.sql.DataSource" url="${dosleg.url}" username="${dosleg.user}" validationQuery="SELECT 1"/>
 </Context>
