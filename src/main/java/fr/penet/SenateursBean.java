@@ -10,11 +10,11 @@ import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.deltaspike.core.api.scope.ViewAccessScoped;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
@@ -25,11 +25,16 @@ import org.apache.deltaspike.core.api.scope.ViewAccessScoped;
 public class SenateursBean implements Serializable {
 
     @Inject
-    private EntityManager em;
+    private Session s;
 
+    List<Sen> toDisplay = null;
+    
     public List<Sen> getValues() {
-        Query query = em.createQuery("from Sen order by sennomuse");
-        return query.getResultList();
+        if(toDisplay == null) {
+            Query query = s.createQuery("from Sen order by sennomuse");
+            toDisplay = query.list();
+        }
+        return toDisplay;
     }
     
     @Getter
