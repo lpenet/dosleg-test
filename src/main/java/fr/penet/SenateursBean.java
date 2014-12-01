@@ -12,6 +12,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.deltaspike.core.api.scope.ViewAccessScoped;
 
 /**
@@ -29,4 +31,20 @@ public class SenateursBean implements Serializable {
         Query query = em.createQuery("from Sen order by sennomuse");
         return query.getResultList();
     }
+    
+    @Getter
+    @Setter
+    private String filteredQuacod;
+    
+    @Getter
+    @Setter
+    private String filteredNom;
+    
+    @Getter
+    @Setter
+    private String filteredPrenom;
+    
+    @Getter
+    @Setter
+    private String filteredEtat;
 }
