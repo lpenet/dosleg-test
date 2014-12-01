@@ -6,14 +6,15 @@
         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="dosleg">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <non-jta-data-source>java:/comp/jdbc/dosleg</non-jta-data-source>
+        <non-jta-data-source>java:/comp/env/jdbc/dosleg</non-jta-data-source>
         <properties>
             <!-- Properties for Hibernate -->
             <property name="hibernate.hbm2ddl.auto" value="create-drop" />
-            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.show_sql" value="true" />
         
 	    <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+            <property name="hibernate.connection.release_mode" value="on_close" />
             <property name="hibernate.hbm2ddl.import_files" value="/sql/dosleg.sql" />
-	</properties>
+        </properties>
     </persistence-unit>
 </persistence>
