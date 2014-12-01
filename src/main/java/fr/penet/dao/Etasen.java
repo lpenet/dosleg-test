@@ -5,6 +5,8 @@
  */
 package fr.penet.dao;
 
+import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,7 +21,7 @@ import lombok.Getter;
 // User is a keyword in some SQL dialects!
 @Table(name="etasen")
 @Getter
-public class Etasen {
+public class Etasen implements Serializable {
     @Id
     private String etasencod;
     
@@ -49,4 +51,13 @@ public class Etasen {
     
     @Column
     private String etasenlilplu;
+    
+    @Column 
+    private long etasennumtri;
+    
+    @Column
+    private Date syscredat;
+    
+    @Column
+    private Date sysmajdat;
 }
