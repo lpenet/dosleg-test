@@ -473,6 +473,11 @@
 				folder. -->
 			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
 			<id>openshift</id>
+			<properties>
+			  <dosleg.url>jdbc:postgresql://${OPENSHIFT_POSTGRESQL_DB_HOST}/doslegtest</dosleg.url>
+			  <dosleg.user>dosleg</dosleg.user>
+			  <dosleg.password>dosleg</dosleg.password>
+			</properties>
 			<build>
 				<finalName>doslegtest</finalName>
 				<plugins>
