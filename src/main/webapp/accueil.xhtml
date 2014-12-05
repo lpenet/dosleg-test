@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      transient="true">
+    <h:head>
+        <meta http-equiv="Content-Type"
+              content="text/html; charset=UTF-8" />
+        <title>Accueil</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <p:dataTable value="#{senateursBean.values}" var="sen" rowKey="#{sen.senmat}" emptyMessage="No value in database">
+                <f:facet name="header">Sénateurs actifs ou anciens</f:facet>
+                <p:column style="width:16px">
+                    <p:rowToggler />
+                </p:column>
+                <p:column headerText="Qualité" filterBy="#{sen.quacod}" filterValue="#{senateursBean.filteredQuacod}">#{sen.quacod}</p:column>
+                <p:column headerText="Nom" filterBy="#{sen.sennomuse}" filterValue="#{senateursBean.filteredNom}">#{sen.sennomuse}</p:column>
+                <p:column headerText="Prénom" filterBy="#{sen.senprenomuse}" filterValue="#{senateursBean.filteredPrenom}">#{sen.senprenomuse}</p:column>
+                <p:column headerText="État" filterBy="#{sen.etasen.etasenlib}" filterValue="#{senateursBean.filteredEtat}">#{sen.etasen.etasenlib}</p:column>
+                <p:rowExpansion>
+                    <p:dataTable value="#{sen.elusensAsList}" var="elusen" rowKey="#{elusen.eluid}" emptyMessage="No mandate"
+                                 sortBy="#{elusen.eludatdeb}">
+                        <p:column headerText="Élection">
+                            <h:outputText value="#{elusen.eludatelu}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Début">
+                            <h:outputText value="#{elusen.eludatdeb}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Fin">
+                            <h:outputText value="#{elusen.eludatfin}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET"/>
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                </p:rowExpansion>
+            </p:dataTable>
+            
+        </h:form>
+    </h:body>
+</f:view>
+	
